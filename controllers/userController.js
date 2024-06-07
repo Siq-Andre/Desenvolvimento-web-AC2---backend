@@ -1,3 +1,5 @@
+const Usuario = require('../models/userModel');
+
 const cadastraUsuario = async (req, res) => {
     const { nome, email, senha} = req.body;
     const usuario = { nome, email, senha};
@@ -12,3 +14,4 @@ const cadastraUsuario = async (req, res) => {
 module.exports = {
     cadastraUsuario
 };
+
