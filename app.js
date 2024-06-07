@@ -2,10 +2,12 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const usuarioRouter = require('./routes/userRoutes');
+const todoRouter = require('./routes/todoRoutes');
 const  mongoose = require('mongoose');
 const { configDotenv } = require('dotenv');
 app.use(express.json());
-app.use('/', usuarioRouter)
+app.use('/', usuarioRouter);
+app.use('/', todoRouter);
 
 
 const DB_USER = process.env.DB_USER;
