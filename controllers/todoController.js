@@ -23,11 +23,16 @@ const cadastraTarefa = async (req, res) => {
 };
 
 const listaTodasTarefas = async (req, res) => {
+    const userEmail = req.user.email;
+
     try {
-        const tarefa = await Tarefa.find();
-        res.status(200).json(tarefa);
-    } catch (error) {
-        res.status(500).json({ error: error.message});
+        let todo = await Tarefa.find({responsavel: userEmail})
+
+        return res.status(200).json(todo)
+        
+    }catch(err){
+        console.log(`Something went wrong ${err}`)
+        return res.status(500).json({error : err})
     }
 };
 

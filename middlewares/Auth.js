@@ -10,6 +10,7 @@ const auth = async (request, response, next) => {
     const[, token] = authHeader.split(" ");
     try {
         const senha = process.env.JWT_SECRET;
+        request.user = jwt.verify(token, senha)
         await jwt.verify(token, senha);
         next();
     } catch(error){
